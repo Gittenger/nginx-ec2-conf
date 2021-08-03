@@ -2,7 +2,13 @@ server {
 	listen 80;
 	server_name _;
 
+	root /path/to/project;
+
+	index index.htm index.html;
+
 	location / {
+		try_files $uri $uri/ =404;
+
 		proxy_pass https://[PUBLIC_IP]:[APP_PORT];
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
