@@ -9,7 +9,7 @@ server {
 	location / {
 		try_files $uri $uri/ =404;
 
-		proxy_pass https://[PUBLIC_IP]:[APP_PORT];
+		proxy_pass [PUBLIC_IP]:[APP_PORT];
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection 'upgrade';
